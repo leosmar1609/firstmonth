@@ -19,11 +19,11 @@ header {
 /* Galeria */
 .gallery {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 15px;
-  padding: 15px;
+  gap: 20px;
+  padding: 20px;
   max-width: 1000px;
   margin: auto;
+  grid-template-columns: repeat(3, 1fr); /* desktop: 3 colunas */
 }
 
 /* Cartões de memória */
@@ -36,6 +36,7 @@ header {
   opacity: 0; /* Começa invisível para animação */
   transform: translateY(50px); /* Começa de baixo */
 }
+
 .memory.visible {
   opacity: 1;
   transform: translateY(0);
@@ -53,6 +54,7 @@ header {
   border-bottom: 1px solid #f1f1f1;
   transition: transform 0.5s ease;
 }
+
 .memory:hover img {
   transform: scale(1.05);
 }
@@ -71,25 +73,10 @@ header {
   margin: 20px auto;
 }
 
-/* Rodapé */
-footer {
-  margin: 40px 10px;
-  font-size: 1.5em;
-  color: #ff4b6e;
-  font-family: 'Great Vibes', cursive;
-  text-shadow: 2px 2px 6px #00000050;
-}
-
 /* Responsividade */
-@media (max-width: 768px) {
-  header {
-    font-size: 2em;
-    padding: 15px 5px;
-  }
-
+@media (max-width: 900px) {
   .gallery {
-    grid-template-columns: 1fr;
-    gap: 20px;
+    grid-template-columns: repeat(2, 1fr); /* tablets e celulares grandes: 2 colunas */
   }
 
   .memory img {
@@ -99,13 +86,13 @@ footer {
   .caption {
     font-size: 1.1em;
   }
-
-  footer {
-    font-size: 1.3em;
-  }
 }
 
 @media (max-width: 480px) {
+  .gallery {
+    grid-template-columns: 1fr; /* celulares pequenos: 1 coluna */
+  }
+
   header {
     font-size: 1.8em;
   }
@@ -121,4 +108,13 @@ footer {
   footer {
     font-size: 1.2em;
   }
+}
+
+/* Rodapé */
+footer {
+  margin: 40px 10px;
+  font-size: 1.5em;
+  color: #ff4b6e;
+  font-family: 'Great Vibes', cursive;
+  text-shadow: 2px 2px 6px #00000050;
 }
