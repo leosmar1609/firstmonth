@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Nossas Memórias ❤️</title>
+  <link rel="stylesheet" href="../css/styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+  <style>
+    /* Esconde todas as memórias, menos a primeira */
+    .memory {
+      display: none;
+    }
+    .memory.visible {
+      display: block;
+      animation: fadeIn 1s ease;
+    }
+    /* Efeito de transição */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+  </style>
+</head>
+<body>
+  <header>🌹 Nossa Galeria de Memórias 🌹</header>
+  <h1>(Clique nas fotos)</h1>
+
+  <div class="gallery">
+    <div class="memory visible">
+      <img src="../images/pic6.jpg" alt="Nós dois">
+      <div class="caption">O começo de tudo, onde meu coração já sabia que era você 💕</div>
+    </div>
+    <div class="memory">
+      <img src="../images/pic2.jpg" alt="Conforto">
+      <div class="caption">Seu abraço é meu lar, meu porto seguro em qualquer tempestade 🤍</div>
+    </div>
+    <div class="memory">
+      <img src="../images/pic5.jpg" alt="Selfie">
+      <div class="caption">Seu sorriso ilumina minha alma e dá sentido a cada instante ✨</div>
+    </div>
+    <div class="memory">
+      <img src="../images/pic1.jpg" alt="Juntos">
+      <div class="caption">De mãos dadas, seguimos sempre lado a lado, em todos os caminhos 🌍❤️</div>
+    </div>
+    <div class="memory">
+      <img src="../images/pic3.jpg" alt="Olhares">
+      <div class="caption">Seu olhar me desarma e me faz acreditar no amor todos os dias 👀💖</div>
+    </div>
+    <div class="memory">
+      <img src="../images/pic4.jpg" alt="Gracinhas">
+      <div class="caption">Nossas bobagens, nossas risadas… o que faz a vida ser tão leve contigo 😍</div>
+    </div>
+    <div class="memory full">
+      <img src="../images/pic7.jpg" alt="Aliança">
+      <div class="caption">Essa aliança é só um símbolo do eterno que já existe entre nós 💍✨</div>
+    </div>
+  </div>
+
+  <footer>
+    💖 11 anos de história, 1º mês de uma vida 💖<br>
+    Te amo! 🥰
+  </footer>
+
+  <!-- Música de fundo -->
+  <audio id="bg-music" autoplay loop muted>
+    <source src="../music/Falling_In_Love.mp3" type="audio/mp3">
+    Seu navegador não suporta áudio.
+  </audio>
+
+  <script>
+    const audio = document.getElementById("bg-music");
+    const memories = document.querySelectorAll(".memory");
+    let currentIndex = 0;
+    let musicStarted = false;
+
+    memories.forEach((memory, index) => {
+      memory.addEventListener("click", () => {
+        // Inicia a música no primeiro clique
+        if (!musicStarted) {
+          audio.muted = false;
+          audio.play();
+          musicStarted = true;
+        }
+
+        // Mostra a próxima foto
+        if (index + 1 < memories.length) {
+          memories[index + 1].classList.add("visible");
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
