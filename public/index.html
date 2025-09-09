@@ -68,27 +68,37 @@
   </audio>
 
   <script>
-    const audio = document.getElementById("bg-music");
-    const memories = document.querySelectorAll(".memory");
-    let currentIndex = 0;
-    let musicStarted = false;
+const audio = document.getElementById("bg-music");
+const memories = document.querySelectorAll(".memory");
+let currentIndex = 0;
+let musicStarted = false;
 
-    memories.forEach((memory, index) => {
-      memory.addEventListener("click", () => {
-        // Inicia a música no primeiro clique
-        if (!musicStarted) {
-          audio.muted = false;
-          audio.play();
-          musicStarted = true;
-        }
+// Inicializa apenas a primeira foto visível
+memories.forEach((memory, index) => {
+  if (index !== 0) memory.classList.remove("visible");
+  else memory.classList.add("visible");
+});
 
-        // Mostra a próxima foto
-        if (index + 1 < memories.length) {
-          memories[index + 1].classList.add("visible");
-        }
-      });
-    });
-  </script>
+memories.forEach((memory, index) => {
+  memory.addEventListener("click", () => {
+    // Inicia a música no primeiro clique
+    if (!musicStarted) {
+      audio.muted = false;
+      audio.play();
+      musicStarted = true;
+    }
+
+    // Mostra a próxima foto com animação
+    if (index + 1 < memories.length) {
+      const nextMemory = memories[index + 1];
+      // Adiciona a classe visible com delay pra suavidade
+      setTimeout(() => {
+        nextMemory.classList.add("visible");
+      }, 50); // pequeno delay pra parecer mais natural
+    }
+  });
+});
+</script>
 
 </body>
 </html>
